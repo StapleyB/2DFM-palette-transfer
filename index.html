@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="FlippySpatula">
+    <meta name="keywords" content="2DFM, Palette">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Palette Data Transfer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <h1>2DFM Palette Transfer Tool</h1>
+
+        <div class="box">
+            <div>
+                <label for="sourceFile"><strong>Source File:</strong></label>
+                <input type="file" id="sourceFile" accept=".player"/>
+            </div>
+
+            <div>
+                <label for="targetFile"><strong>Target File:</strong></label>
+                <input type="file" id="targetFile" accept=".player"/>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div>
+                <button class="high_emphasis" id="transferButton">Transfer Palettes</button>
+            </div>
+
+            <div id="transfer_error" class="error" style="display:none">
+                Error transferring palettes. Ensure you selected valid .Player files.
+            </div>
+    
+            <div id="output" style="display:none">
+                <label for="downloadLink" >Result: </label>
+                <a id="downloadLink" title="Click to Download">Download Modified File</a>
+            </div>
+
+        </div>
+
+        <button id="advanced_options">Advanced Options:</button>
+        <div id="paletteSelectors" style="display:none">
+            <p>
+                Use the dropdown menus below to customize which palettes are transferred where.<br>
+                To quickly transfer all palettes, close this menu by clicking the above button again.
+            </p>
+            <!-- Dropdowns will be dynamically created here -->
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/palettes.js"></script>
+    <script src="js/advanced_options.js"></script>
+</body>
+</html>

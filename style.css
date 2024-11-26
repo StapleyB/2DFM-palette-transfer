@@ -1,0 +1,83 @@
+/* Base styles for body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Centered container with shadow and rounded corners */
+.box {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings styles */
+h1 {
+    color: #408040;
+    margin-bottom: 10px;
+}
+
+h5 {
+    color: #408040;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* Label and input fields */
+label {
+    color: #408040; 
+    margin-right: 5px;
+}
+
+input, button  {
+    padding: 8px;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+button.high_emphasis:not(:disabled) {
+    background-color: #4CAF50; /* Green button background */
+    color: #fff; /* White button text */
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button.high_emphasis:hover:not(:disabled) {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #408040; 
+}
+
+.error {
+    color: #ff0000; /* Red error text */
+    margin-top: 10px;
+}
+
+.spacer {
+    margin: 16px;
+}
+
+#output {
+    margin-top: 10px;
+}
+
+#output a {
+    font-weight: bold;
+}
