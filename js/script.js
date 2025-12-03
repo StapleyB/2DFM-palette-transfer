@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const sourcePaletteData = extractPalettes(sourceFileBuffer, sourcePaletteOffset)
             let targetPaletteData
 
+            // Advanced palette picking
             if (useAdvanced) {
                 targetPaletteData = extractPalettes(targetFileBuffer, targetPaletteOffset)
                 for (let i = 1; i <= 8; i++) {
@@ -76,9 +77,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 offset += PALETTE_BYTE_COUNT + GAP_AFTER_PALETTE;
             }
 
-            // Copy the target file buffer and replace the palette data
-            const outputBuffer = new Uint8Array(targetFileBuffer)
-            outputBuffer.set(collapseTargetData, targetPaletteOffset)
+
+            // Generate output buffer
+            let outputBuffer;
+
+            if (useAdvanced && document.getElementById("image-transfer")) {
+                // Staple the source image data into the target player file if desired
+                // Image data may be variable length
+                const targetStartToImageData = new Uint8Array(targetFileBuffer).slice(0, calculateImageDataOffset(targetFileBuffer))
+                const targetPalletsToEnd = new Uint8Array(targetFileBuffer).slice(targetPaletteOffset)
+                const sourceImageData = new Uint8Array(sourceFileBuffer).slice(calculateImageDataOffset(sourceFileBuffer), sourcePaletteOffset)
+                outputBuffer = new Uint8Array(targetStartToImageData.length + targetPalletsToEnd.length + sourceImageData.length)
+                outputBuffer.set(targetStartToImageData, 0)
+                outputBuffer.set(sourceImageData, targetStartToImageData.length)
+                outputBuffer.set(targetPalletsToEnd, targetStartToImageData.length + sourceImageData.length)
+
+                // Replacing palette data
+                outputBuffer.set(collapseTargetData, targetStartToImageData.length + sourceImageData.length)
+            } else {
+                outputBuffer = new Uint8Array(targetFileBuffer)
+                outputBuffer.set(collapseTargetData, targetPaletteOffset)
+            } 
 
             // Create a downloadable file
             const blob = new Blob([outputBuffer], { type: "application/octet-stream" })

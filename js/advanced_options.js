@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         useAdvanced = !useAdvanced
         paletteSelectorsContainer.style.display = useAdvanced ? "block" : "none"
     })
+    const image_tranfer = document.getElementById("image_transfer_check")
 
     for (let i = 1; i <= 8; i++) {
         const label = document.createElement('label')
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         label.appendChild(select)
-        paletteSelectorsContainer.appendChild(label)
-        paletteSelectorsContainer.appendChild(document.createElement('br'))
+        paletteSelectorsContainer.insertBefore(label, image_tranfer)
+        paletteSelectorsContainer.insertBefore(document.createElement('br'), image_tranfer)
     }
 })

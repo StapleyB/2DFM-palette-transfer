@@ -17,9 +17,15 @@ You will see 8 selectors with which to customize the **target** palettes. By def
 
 What this allows, however, is the ability to move your custom palettes if a new update adds a new palette over a slot you already wrote to. For example, in the Palette 5 selector, selecting 'Source Palette 3' will move the 3rd palette on the source file to the 5th palette on the target.
 
+Beneath the palette selectors is a checkbox that allows you to transfer sprite image data between the player files, for purposes such as quickly transferring sprite mods. Will not break/crash the game if transferring between .player files with different numbers of images, but the game may be unplayable in other ways; if an I block calls an image index out of range of the new sprite data it will simply render nothing, leaving the character invisible.
+
 
 ## Changelog
 
 ### v0.1
 
 Initial Release. 
+
+### v0.2
+
+Added image data transfer option to preserve sprite mods.

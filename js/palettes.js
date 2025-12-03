@@ -76,3 +76,31 @@ function extractPalettes(buffer, paletteOffset) {
 
     return palettes
 }
+
+// Quick and simple code copy to get just the Image Data offset
+function calculateImageDataOffset(buffer) {
+    let offset = 0
+
+    // Signature Length
+    const SignatureLength = 16 // 0x10
+    offset += SignatureLength
+
+    // Character Name Length
+    const CharacterNameLength = 256 // 0x100
+    offset += CharacterNameLength
+
+    // Read Move Count (4 bytes)
+    const dataView = new DataView(buffer.buffer)
+    const MoveCount = dataView.getInt32(offset, true)
+    offset += 4
+
+    // Skip Move Data
+    const MoveActionListLength = 39 // 0x27
+    offset += MoveCount * MoveActionListLength
+
+    // Read iUnknown and Skip Related Data (4 bytes + iUnknown << 4)
+    const iUnknown = dataView.getInt32(offset, true)
+    offset += 4 + (iUnknown << 4)
+    
+    return offset
+}
