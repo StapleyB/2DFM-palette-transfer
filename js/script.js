@@ -28,6 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateButtonState()
 
+    const tooltip = document.getElementById("tooltip")
+    function showTooltip() {
+        tooltip.classList.add("show")
+        setTimeout(() => {
+            tooltip.classList.remove("show")
+        }, 2000)
+    }
+
     sourceInput.addEventListener("change", async (event) => {
         const file = event.target.files[0]
         if (file) {
@@ -63,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (let i = 1; i <= 8; i++) {
                     const selectedValue = document.getElementById(`palette${i}`).value
                     if (selectedValue !== '<unchanged>') {
-                        targetPaletteData[i-1] = sourcePaletteData[parseInt(selectedValue)-1]
+                        targetPaletteData[i - 1] = sourcePaletteData[parseInt(selectedValue) - 1]
                     }
                 }
             } else {
@@ -97,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 outputBuffer = new Uint8Array(targetFileBuffer)
                 outputBuffer.set(collapseTargetData, targetPaletteOffset)
-            } 
+            }
 
             // Create a downloadable file
             const blob = new Blob([outputBuffer], { type: "application/octet-stream" })
@@ -105,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             downloadLink.download = targetInput.files[0]?.name
             downloadLink.textContent = targetInput.files[0]?.name
             output.style.display = 'block'
+            showTooltip()
         } catch (e) {
             transferError.style.display = 'block'
         }

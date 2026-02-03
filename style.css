@@ -31,7 +31,7 @@ h5 {
 
 /* Label and input fields */
 label {
-    color: #408040; 
+    color: #408040;
     margin-right: 5px;
 }
 
@@ -39,7 +39,8 @@ label.low_emphasis {
     color: #333;
 }
 
-input, button  {
+input,
+button {
     padding: 8px;
     border: 1px solid #4CAF50;
     border-radius: 4px;
@@ -48,8 +49,10 @@ input, button  {
 }
 
 button.high_emphasis:not(:disabled) {
-    background-color: #4CAF50; /* Green button background */
-    color: #fff; /* White button text */
+    background-color: #4CAF50;
+    /* Green button background */
+    color: #fff;
+    /* White button text */
     cursor: pointer;
 }
 
@@ -61,16 +64,18 @@ button:disabled {
 }
 
 button.high_emphasis:hover:not(:disabled) {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
+    /* Darker green on hover */
 }
 
 select {
     padding: 8px;
-    border: 1px solid #408040; 
+    border: 1px solid #408040;
 }
 
 .error {
-    color: #ff0000; /* Red error text */
+    color: #ff0000;
+    /* Red error text */
     margin-top: 10px;
 }
 
@@ -84,4 +89,21 @@ select {
 
 #output a {
     font-weight: bold;
+}
+
+/* Tooltip styles */
+.tooltip {
+    background-color: #4CAF50;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.tooltip.show {
+    opacity: 1;
+    transition: none;
 }

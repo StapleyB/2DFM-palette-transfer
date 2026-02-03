@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <title>Palette Data Transfer</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="box">
         <h1>2DFM Palette Transfer Tool</h1>
@@ -16,12 +18,12 @@
         <div class="box">
             <div>
                 <label for="sourceFile"><strong>Source File:</strong></label>
-                <input type="file" id="sourceFile" accept=".player"/>
+                <input type="file" id="sourceFile" accept=".player" autocomplete="off" />
             </div>
 
             <div>
                 <label for="targetFile"><strong>Target File:</strong></label>
-                <input type="file" id="targetFile" accept=".player"/>
+                <input type="file" id="targetFile" accept=".player" autocomplete="off" />
             </div>
 
             <div class="spacer"></div>
@@ -33,10 +35,11 @@
             <div id="transfer_error" class="error" style="display:none">
                 Error transferring palettes. Ensure you selected valid .Player files.
             </div>
-    
+
             <div id="output" style="display:none">
-                <label for="downloadLink" >Result: </label>
+                <label for="downloadLink">Result: </label>
                 <a id="downloadLink" title="Click to Download">Download Modified File</a>
+                <span id="tooltip" class="tooltip">Success!</span>
             </div>
 
         </div>
@@ -50,7 +53,7 @@
             <!-- Dropdowns will be dynamically created here -->
             <div id="image_transfer_check">
                 <p>
-                    <input type="checkbox" id="image-transfer" name="image-transfer" autocomplete="off"/>
+                    <input type="checkbox" id="image-transfer" name="image-transfer" autocomplete="off" />
                     <label for="image-transfer" class="low_emphasis">Transfer Image Data (e.g. sprite mods)</label>
                 </p>
             </div>
@@ -61,4 +64,5 @@
     <script src="js/palettes.js"></script>
     <script src="js/advanced_options.js"></script>
 </body>
+
 </html>
