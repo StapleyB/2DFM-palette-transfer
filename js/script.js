@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Generate output buffer
             let outputBuffer;
 
-            if (useAdvanced && document.getElementById("image-transfer")) {
+            if (useAdvanced && document.getElementById("image-transfer").checked) {
                 // Staple the source image data into the target player file if desired
                 // Image data may be variable length
                 const targetStartToImageData = new Uint8Array(targetFileBuffer).slice(0, calculateImageDataOffset(targetFileBuffer))
